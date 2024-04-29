@@ -1,0 +1,358 @@
+* {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background-color: #3b5998;
+  color: #fff;
+  padding: 20px;
+  position: relative; /* Add position relative for the nav */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Styles for the active nav-links */
+.nav-active {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: calc(100% + 20px); /* Adjust top position when header is sticky */
+  left: 0;
+  width: 100%;
+  background-color: #3b5998;
+  padding: 20px;
+  z-index: 1;
+}
+
+.sticky + .nav-active {
+  top: 100%; /* Reset top position when header is sticky */
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  transition: all 0.3s ease-in-out; /* Add this line */
+}
+
+.nav-active li {
+  margin: 10px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* Stack links vertically */
+  align-items: flex-start; /* Align links to the left */
+  position: absolute; /* Position the nav-links absolutely */
+  top: 100%; /* Position below the header */
+  left: 0;
+  width: 100%;
+  background-color: #3b5998; /* Add background color */
+  padding: 20px; /* Add some padding */
+  z-index: 1; /* Ensure it's above other elements */
+  transform: translateX(-100%); /* Initially hide the nav-links */
+  transition: transform 0.3s ease-in-out; /* Add a transition effect */
+}
+
+.nav-links li {
+  margin: 10px 0;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.burger {
+  display: block; /* Show the burger on all screen sizes */
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px;
+  transition: all 0.3s ease-in-out; /* Add a transition effect */
+}
+
+/* Toggle styles for the burger */
+.burger.active .line1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.active .line2 {
+  opacity: 0;
+}
+
+.burger.active .line3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Show the nav-links when the burger is active */
+.nav-active {
+  transform: translateX(0); /* Show the nav-links */
+}
+
+/* Responsive Styles */
+@media (min-width: 769px) {
+  .burger {
+    display: none; /* Hide the burger on larger screens */
+  }
+
+  .nav-links {
+    position: static; /* Reset position for larger screens */
+    flex-direction: row; /* Display links horizontally */
+    transform: translateX(0); /* Reset transform */
+    background-color: transparent; /* Reset background color */
+    padding: 0; /* Reset padding */
+  }
+
+  .nav-links li {
+    margin-right: 20px;
+  }
+}
+
+/* Section Styles */
+.section {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.odd-section {
+  background-color: #f8f8f8;
+}
+
+.home-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(img/home-bg.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 95px 0;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.home-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center; /* Add text-align: center; to center the text */
+}
+
+.home-content h2 {
+  font-size: 2.5rem;
+}
+
+.home-content p {
+  font-size: 1.2rem;
+}
+.about-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 40px;
+  margin: 40px 0;
+}
+
+.about-text {
+  flex: 1;
+  text-align: left;
+  color: #333;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 250px;
+}
+
+/* Trophy Section Styles */
+.trophy-images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.trophy-card {
+  margin: 0;
+  text-align: center;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.trophy-card img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+}
+
+/* Responsive Styles for Trophy Section */
+@media (max-width: 768px) {
+  .trophy-card {
+    width: 45%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .trophy-card {
+    width: 80%;
+    height: auto;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.news-articles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.news-card {
+  margin: 20px;
+  max-width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-card img {
+  width: 100%;
+  height: auto;
+}
+
+.news-card h3 {
+  margin: 10px;
+}
+
+.news-card p {
+  margin: 10px;
+}
+
+.read-more {
+  display: inline-block;
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #3b5998;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #d9534f;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  margin: 20px;
+}
+
+.social-icons {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.social-icons li {
+  margin-right: 10px;
+}
+
+.social-icons li a {
+  color: #fff;
+  font-size: 20px;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .nav-active {
+    display: flex;
+  }
+
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+}
